@@ -5,12 +5,8 @@ import com.aetherteam.aether.block.AetherWoodTypes;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-@EventBusSubscriber(modid = Aether.MODID, value = Dist.CLIENT, bus = Bus.MOD)
 public class AetherAtlases {
 	public static Material TREASURE_CHEST_MATERIAL;
 	public static Material TREASURE_CHEST_LEFT_MATERIAL;

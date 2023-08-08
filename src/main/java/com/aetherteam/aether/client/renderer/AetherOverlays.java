@@ -121,6 +121,7 @@ public class AetherOverlays {
             }
 
             guiGraphics.pose().pushPose();
+            RenderSystem.enableBlend();
             RenderSystem.disableDepthTest();
             RenderSystem.depthMask(false);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, timeInPortal);
@@ -129,6 +130,7 @@ public class AetherOverlays {
             RenderSystem.depthMask(true);
             RenderSystem.enableDepthTest();
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+            RenderSystem.disableBlend();
             guiGraphics.pose().popPose();
         }
     }
@@ -190,9 +192,11 @@ public class AetherOverlays {
         alpha *= Math.sqrt(effectScale);
         RenderSystem.disableDepthTest();
         RenderSystem.depthMask(false);
+        RenderSystem.enableBlend();
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, alpha);
         guiGraphics.blit(resource, 0, 0, -90, 0.0F, 0.0F, window.getGuiScaledWidth(), window.getGuiScaledHeight(), window.getGuiScaledWidth(), window.getGuiScaledHeight());
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.disableBlend();
         RenderSystem.depthMask(true);
         RenderSystem.enableDepthTest();
         guiGraphics.pose().popPose();
