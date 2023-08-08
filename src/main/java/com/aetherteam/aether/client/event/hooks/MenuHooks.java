@@ -11,6 +11,7 @@ import com.aetherteam.cumulus.api.MenuHelper;
 import com.aetherteam.cumulus.client.CumulusClient;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.SplashRenderer;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.TitleScreen;
@@ -41,7 +42,7 @@ public class MenuHooks {
      */
     public static void setCustomSplashText(TitleScreen screen) {
         Predicate<Calendar> condition = (calendar) -> calendar.get(Calendar.MONTH) + 1 == 7 && calendar.get(Calendar.DATE) == 22;
-        CumulusClient.MENU_HELPER.setCustomSplash(screen, condition, "Happy anniversary to the Aether!");
+        CumulusClient.MENU_HELPER.setCustomSplash(screen, condition, new SplashRenderer("Happy anniversary to the Aether!"));
     }
 
     /**

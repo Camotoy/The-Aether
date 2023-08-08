@@ -161,6 +161,7 @@ repositories {
     maven { url = "https://gitlab.com/api/v4/projects/21830712/packages/maven" }
     maven githubPackage.invoke("The-Aether-Team/Nitrogen")
     maven githubPackage.invoke("The-Aether-Team/Cumulus")
+    mavenLocal()
 }
 
 tasks.named('jar', Jar).configure {

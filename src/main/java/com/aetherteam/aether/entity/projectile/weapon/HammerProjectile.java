@@ -46,16 +46,16 @@ public class HammerProjectile extends ThrowableProjectile {
     @Override
     public void tick() {
         super.tick();
-        if (!this.isOnGround()) {
+        if (!this.onGround()) {
             ++this.ticksInAir;
         }
         if (this.ticksInAir > 500) {
-            if (!this.getLevel().isClientSide()) {
+            if (!this.level().isClientSide()) {
                 this.discard();
             }
         }
-        if (this.getLevel().isClientSide()) {
-            this.getLevel().addParticle(ParticleTypes.CLOUD, this.getX(), this.getY() + 0.2, this.getZ(), 0.0, 0.0, 0.0);
+        if (this.level().isClientSide()) {
+            this.level().addParticle(ParticleTypes.CLOUD, this.getX(), this.getY() + 0.2, this.getZ(), 0.0, 0.0, 0.0);
         }
     }
 
@@ -80,7 +80,7 @@ public class HammerProjectile extends ThrowableProjectile {
     @Override
     protected void onHit(HitResult result) {
         super.onHit(result);
-        if (!this.getLevel().isClientSide()) {
+        if (!this.level().isClientSide()) {
             this.discard();
         }
     }
@@ -91,7 +91,7 @@ public class HammerProjectile extends ThrowableProjectile {
      */
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        if (!this.getLevel().isClientSide()) {
+        if (!this.level().isClientSide()) {
             Entity target = result.getEntity();
             this.launchTarget(target);
         } else  {
@@ -106,8 +106,8 @@ public class HammerProjectile extends ThrowableProjectile {
     @Override
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
-        if (!this.getLevel().isClientSide()) {
-            List<Entity> list = this.getLevel().getEntities(this, this.getBoundingBox().inflate(5.0));
+        if (!this.level().isClientSide()) {
+            List<Entity> list = this.level().getEntities(this, this.getBoundingBox().inflate(5.0));
             for (Entity target : list) {
                 this.launchTarget(target);
             }
@@ -118,11 +118,11 @@ public class HammerProjectile extends ThrowableProjectile {
 
     private void spawnParticles() {
         for (int j = 0; j < 8; j++) {
-            this.getLevel().addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
-            this.getLevel().addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
-            this.getLevel().addParticle(ParticleTypes.SMOKE, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
-            this.getLevel().addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
-            this.getLevel().addParticle(ParticleTypes.FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+            this.level().addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+            this.level().addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+            this.level().addParticle(ParticleTypes.SMOKE, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+            this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+            this.level().addParticle(ParticleTypes.FLAME, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
         }
     }
 
