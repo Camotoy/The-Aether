@@ -250,7 +250,7 @@ public class Aerbunny extends AetherAnimal {
         Vec3 motion = this.getDeltaMovement();
         if (motion.y() < 0) {
             this.puff();
-            this.getLevel().broadcastEntityEvent(this, (byte) 70);
+            this.level().broadcastEntityEvent(this, (byte) 70);
         }
         this.setDeltaMovement(new Vec3(motion.x(), 0.25, motion.z()));
     }
